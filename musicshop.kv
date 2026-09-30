@@ -1,150 +1,206 @@
 #:import dp kivy.metrics.dp
 
+
 <LoginScreen>:
+
     canvas.before:
         Color:
-            rgba: 0.06, 0.08, 0.16, 1
+            rgba: 0.025, 0.035, 0.075, 1
         Rectangle:
             pos: self.pos
             size: self.size
 
     BoxLayout:
         orientation: "vertical"
-        padding: dp(35)
-        spacing: dp(18)
-
-        Label:
-            text: "MUSIC SHOP"
-            font_size: "34sp"
-            bold: True
-            color: 0.35, 0.85, 1, 1
-            size_hint_y: None
-            height: dp(80)
-
-        Label:
-            text: "Temukan instrumen untuk musikmu"
-            font_size: "16sp"
-            color: 0.75, 0.78, 0.85, 1
-            size_hint_y: None
-            height: dp(35)
+        padding: dp(40)
+        spacing: dp(12)
 
         Widget:
-            size_hint_y: 0.3
+            size_hint_y: 0.08
 
         Label:
-            text: "LOGIN"
-            font_size: "24sp"
+            text: "M U S I C  S H O P"
+            font_size: "32sp"
+            bold: True
+            color: 0.30, 0.70, 1, 1
+            size_hint_y: None
+            height: dp(55)
+
+        Label:
+            text: "PREMIUM MUSICAL INSTRUMENTS"
+            font_size: "14sp"
+            bold: True
+            color: 0.65, 0.75, 0.90, 1
+            size_hint_y: None
+            height: dp(30)
+
+        Label:
+            text: "Temukan Instrument Untuk Musikmu"
+            font_size: "17sp"
             bold: True
             color: 1, 1, 1, 1
             size_hint_y: None
-            height: dp(50)
+            height: dp(10)
+            padding: 0, dp(20)
+
+        Label:
+            text: "Temukan pilihan alat musik berkualitas untuk\nmendukung setiap nada, karya, dan perjalanan musikmu."
+            font_size: "12sp"
+            color: 0.60, 0.67, 0.78, 1
+            halign: "center"
+            text_size: self.width, None
+            size_hint_y: None
+            height: dp(45)
+
+        Widget:
+            size_hint_y: 0.04
+
+        Label:
+            text: "MEMBER ACCESS"
+            font_size: "21sp"
+            bold: True
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(40)
 
         TextInput:
+            id: username
             hint_text: "Masukkan username"
             multiline: False
             size_hint_y: None
             height: dp(48)
-            background_color: 0.15, 0.18, 0.28, 1
+            background_normal: ""
+            background_color: 0.10, 0.13, 0.22, 1
             foreground_color: 1, 1, 1, 1
-            hint_text_color: 0.65, 0.68, 0.75, 1
-            padding: dp(12), dp(12)
+            hint_text_color: 0.50, 0.55, 0.65, 1
+            padding: dp(14), dp(12)
+
+        Button:
+            text: "HAPUS"
+            size_hint_y: None
+            height: dp(32)
+            background_normal: ""
+            background_color: 0.15, 0.18, 0.28, 1
+            color: 0.70, 0.80, 0.95, 1
+            font_size: "11sp"
+            on_press:
+                root.hapus_username()
 
         TextInput:
+            id: password
             hint_text: "Masukkan password"
             password: True
             multiline: False
             size_hint_y: None
             height: dp(48)
-            background_color: 0.15, 0.18, 0.28, 1
+            background_normal: ""
+            background_color: 0.10, 0.13, 0.22, 1
             foreground_color: 1, 1, 1, 1
-            hint_text_color: 0.65, 0.68, 0.75, 1
-            padding: dp(12), dp(12)
+            hint_text_color: 0.50, 0.55, 0.65, 1
+            padding: dp(14), dp(12)
+
+        Button:
+            text: "LIHAT"
+            size_hint_y: None
+            height: dp(32)
+            background_normal: ""
+            background_color: 0.15, 0.18, 0.28, 1
+            color: 0.70, 0.80, 0.95, 1
+            font_size: "11sp"
+            on_press:
+                root.toggle_password()
 
         Button:
             text: "MASUK KE MUSIC SHOP"
             size_hint_y: None
             height: dp(52)
             background_normal: ""
-            background_color: 0.20, 0.65, 0.95, 1
+            background_color: 0.15, 0.55, 0.90, 1
+            color: 1, 1, 1, 1
             bold: True
-            font_size: "16sp"
+            font_size: "14sp"
             on_press:
-                app.root.current = "home"
-
-        Widget:
-            size_hint_y: 0.4
+                root.login()
 
 
-<HomeScreen>:
+<WelcomeScreen>:
+
     canvas.before:
         Color:
-            rgba: 0.08, 0.10, 0.20, 1
+            rgba: 0.025, 0.035, 0.075, 1
         Rectangle:
             pos: self.pos
             size: self.size
 
     BoxLayout:
         orientation: "vertical"
-        padding: dp(35)
+        padding: dp(40)
         spacing: dp(20)
 
-        Label:
-            text: "MUSIC SHOP"
-            font_size: "32sp"
-            bold: True
-            color: 0.95, 0.45, 0.75, 1
-            size_hint_y: None
-            height: dp(65)
+        Widget:
+            size_hint_y: 0.20
 
         Label:
-            text: "Selamat Datang!"
-            font_size: "26sp"
+            text: "SELAMAT DATANG"
+            font_size: "32sp"
             bold: True
-            color: 1, 1, 1, 1
+            color: 0.30, 0.70, 1, 1
             size_hint_y: None
             height: dp(55)
 
         Label:
-            text: "Pilih alat musik favoritmu dan mulai perjalanan musikalmu."
-            font_size: "16sp"
-            color: 0.75, 0.78, 0.85, 1
-            text_size: self.width, None
-            halign: "center"
+            text: "DI MUSIC SHOP"
+            font_size: "25sp"
+            bold: True
+            color: 1, 1, 1, 1
             size_hint_y: None
-            height: dp(70)
+            height: dp(50)
+
+        Label:
+            text: "Exclusive instruments • Quality sound • Your music"
+            font_size: "13sp"
+            color: 0.60, 0.70, 0.85, 1
+            halign: "center"
+            text_size: self.width, None
+            size_hint_y: None
+            height: dp(40)
 
         Widget:
-            size_hint_y: 0.3
+            size_hint_y: 0.20
 
         Button:
-            text: "🎵  LIHAT PRODUK"
+            text: "MULAI BELANJA"
             size_hint_y: None
-            height: dp(60)
+            height: dp(55)
             background_normal: ""
-            background_color: 0.55, 0.30, 0.90, 1
+            background_color: 0.15, 0.55, 0.90, 1
+            color: 1, 1, 1, 1
             bold: True
-            font_size: "18sp"
+            font_size: "15sp"
             on_press:
                 app.root.current = "product"
 
         Button:
-            text: "KELUAR / KEMBALI KE LOGIN"
+            text: "KEMBALI KE LOGIN"
             size_hint_y: None
-            height: dp(48)
+            height: dp(45)
             background_normal: ""
-            background_color: 0.22, 0.25, 0.38, 1
-            font_size: "15sp"
+            background_color: 0.15, 0.18, 0.28, 1
+            color: 0.70, 0.80, 0.95, 1
+            bold: True
+            font_size: "12sp"
             on_press:
                 app.root.current = "login"
 
         Widget:
-            size_hint_y: 0.5
+            size_hint_y: 0.20
 
 
 <ProductScreen>:
+
     canvas.before:
         Color:
-            rgba: 0.07, 0.08, 0.15, 1
+            rgba: 0.025, 0.035, 0.075, 1
         Rectangle:
             pos: self.pos
             size: self.size
@@ -152,258 +208,219 @@
     BoxLayout:
         orientation: "vertical"
         padding: dp(30)
-        spacing: dp(18)
+        spacing: dp(15)
+
+        Widget:
+            size_hint_y: 1
 
         Label:
-            text: "DAFTAR PRODUK"
-            font_size: "30sp"
+            text: "PILIH PRODUK"
+            font_size: "20sp"
             bold: True
-            color: 1, 0.70, 0.25, 1
+            color: 0.30, 0.70, 1, 1
             size_hint_y: None
-            height: dp(65)
-
-        Label:
-            text: "Pilih instrumen yang ingin kamu lihat"
-            font_size: "16sp"
-            color: 0.70, 0.72, 0.80, 1
-            size_hint_y: None
-            height: dp(40)
+            height: dp(60)
 
         Button:
-            text: "🎸   GITAR AKUSTIK"
+            text: "GUITAR"
             size_hint_y: None
-            height: dp(65)
-            background_normal: ""
-            background_color: 0.85, 0.30, 0.35, 1
-            bold: True
-            font_size: "18sp"
+            height: dp(55)
             on_press:
-                root.pilih_produk("Gitar Akustik")
+                root.pilih_produk("Guitar")
 
         Button:
-            text: "🎹   KEYBOARD"
+            text: "PIANO"
             size_hint_y: None
-            height: dp(65)
-            background_normal: ""
-            background_color: 0.25, 0.55, 0.90, 1
-            bold: True
-            font_size: "18sp"
+            height: dp(55)
             on_press:
-                root.pilih_produk("Keyboard")
+                root.pilih_produk("Piano")
 
         Button:
-            text: "🥁   DRUM"
+            text: "DRUM"
             size_hint_y: None
-            height: dp(65)
-            background_normal: ""
-            background_color: 0.65, 0.35, 0.85, 1
-            bold: True
-            font_size: "18sp"
+            height: dp(55)
             on_press:
                 root.pilih_produk("Drum")
 
-        Widget:
-
         Button:
-            text: "← KEMBALI"
+            text: "KEMBALI"
             size_hint_y: None
-            height: dp(48)
-            background_normal: ""
-            background_color: 0.22, 0.24, 0.35, 1
+            height: dp(45)
             on_press:
-                app.root.current = "home"
+                app.root.current = "welcome"
+
+        Widget:
+            size_hint_y: 1
 
 
 <DetailScreen>:
+
     canvas.before:
         Color:
-            rgba: 0.06, 0.08, 0.14, 1
+            rgba: 0.025, 0.035, 0.075, 1
         Rectangle:
             pos: self.pos
             size: self.size
 
     BoxLayout:
         orientation: "vertical"
-        padding: dp(35)
-        spacing: dp(20)
+        padding: dp(30)
+        spacing: dp(12)
+
+        Widget:
+            size_hint_y: 0.10
 
         Label:
-            text: "DETAIL PRODUK"
-            font_size: "30sp"
+            text: "PILIH MEREK " + root.nama_produk.upper()
+            font_size: "25sp"
             bold: True
-            color: 0.30, 0.90, 0.75, 1
-            size_hint_y: None
-            height: dp(70)
-
-        Label:
-            text: root.nama_produk
-            font_size: "28sp"
-            bold: True
-            color: 1, 1, 1, 1
-            size_hint_y: None
-            height: dp(100)
-
-        Label:
-            text: "Produk pilihanmu siap ditambahkan ke keranjang."
-            font_size: "16sp"
-            color: 0.70, 0.73, 0.82, 1
+            color: 0.30, 0.70, 1, 1
             size_hint_y: None
             height: dp(50)
 
         Label:
-            id: status
-            text: "Silakan tambahkan produk ke keranjang"
-            font_size: "15sp"
-            color: 1, 0.80, 0.35, 1
-            text_size: self.width, None
-            halign: "center"
+            text: "Pilih salah satu merek"
+            font_size: "13sp"
+            color: 0.60, 0.70, 0.85, 1
             size_hint_y: None
-            height: dp(70)
-
-        Widget:
+            height: dp(30)
 
         Button:
-            text: "🛒  TAMBAHKAN KE KERANJANG"
+            text: "FENDER" if root.nama_produk == "Guitar" else ("YAMAHA" if root.nama_produk == "Piano" else "PEARL")
             size_hint_y: None
-            height: dp(60)
+            height: dp(45)
+            on_press:
+                root.pilih_merek(self.text)
+
+        Button:
+            text: "GIBSON" if root.nama_produk == "Guitar" else ("ROLAND" if root.nama_produk == "Piano" else "TAMA")
+            size_hint_y: None
+            height: dp(45)
+            on_press:
+                root.pilih_merek(self.text)
+
+        Button:
+            text: "IBANEZ" if root.nama_produk == "Guitar" else ("KAWAI" if root.nama_produk == "Piano" else "YAMAHA")
+            size_hint_y: None
+            height: dp(45)
+            on_press:
+                root.pilih_merek(self.text)
+
+        Button:
+            text: "PRS" if root.nama_produk == "Guitar" else ("CASIO" if root.nama_produk == "Piano" else "LUDWIG")
+            size_hint_y: None
+            height: dp(45)
+            on_press:
+                root.pilih_merek(self.text)
+
+        Button:
+            text: "YAMAHA" if root.nama_produk == "Guitar" else ("STEINWAY & SONS" if root.nama_produk == "Piano" else "DW")
+            size_hint_y: None
+            height: dp(45)
+            on_press:
+                root.pilih_merek(self.text)
+
+        Label:
+            text: "Merek dipilih: " + root.merek_dipilih if root.merek_dipilih else "Belum memilih merek"
+            font_size: "13sp"
+            color: 0.70, 0.80, 0.95, 1
+            size_hint_y: None
+            height: dp(30)
+
+        Button:
+            text: "TAMBAH KE KERANJANG"
+            size_hint_y: None
+            height: dp(52)
             background_normal: ""
-            background_color: 0.15, 0.70, 0.50, 1
+            background_color: 0.15, 0.55, 0.90, 1
+            color: 1, 1, 1, 1
             bold: True
-            font_size: "16sp"
             on_press:
                 root.tambah_keranjang()
 
         Button:
-            text: "← KEMBALI KE PRODUK"
+            text: "KEMBALI KE PRODUK"
             size_hint_y: None
-            height: dp(48)
+            height: dp(42)
             background_normal: ""
-            background_color: 0.22, 0.24, 0.35, 1
+            background_color: 0.15, 0.18, 0.28, 1
+            color: 0.70, 0.80, 0.95, 1
             on_press:
                 app.root.current = "product"
 
+        Widget:
+            size_hint_y: 0.10
+
 
 <CartScreen>:
+
     canvas.before:
         Color:
-            rgba: 0.06, 0.08, 0.14, 1
+            rgba: 0.025, 0.035, 0.075, 1
         Rectangle:
             pos: self.pos
             size: self.size
 
     BoxLayout:
         orientation: "vertical"
-        padding: dp(35)
+        padding: dp(40)
         spacing: dp(20)
 
-        Label:
-            text: "KERANJANG BELANJA"
-            font_size: "30sp"
-            bold: True
-            color: 0.30, 0.90, 0.75, 1
-            size_hint_y: None
-            height: dp(70)
+        Widget:
+            size_hint_y: 0.25
 
         Label:
-            text: "Produk yang kamu pilih:"
-            font_size: "17sp"
-            color: 0.70, 0.73, 0.82, 1
+            text: "PEMBELIAN BERHASIL"
+            font_size: "30sp"
+            bold: True
+            color: 0.30, 0.70, 1, 1
+            halign: "center"
+            text_size: self.width, None
+            size_hint_y: None
+            height: dp(60)
+
+        Label:
+            text: root.nama_produk + " - " + root.merek_produk
+            font_size: "20sp"
+            bold: True
+            color: 1, 1, 1, 1
+            halign: "center"
+            text_size: self.width, None
+            size_hint_y: None
+            height: dp(45)
+
+        Label:
+            text: "Produk berhasil ditambahkan ke keranjang."
+            font_size: "13sp"
+            color: 0.60, 0.70, 0.85, 1
+            halign: "center"
+            text_size: self.width, None
             size_hint_y: None
             height: dp(40)
 
-        Label:
-            text: root.nama_produk
-            font_size: "28sp"
-            bold: True
-            color: 1, 1, 1, 1
-            size_hint_y: None
-            height: dp(100)
-
-        Label:
-            text: "Produk berhasil ditambahkan ke keranjang!"
-            font_size: "16sp"
-            color: 1, 0.80, 0.35, 1
-
         Widget:
+            size_hint_y: 0.15
 
         Button:
-            text: "← LANJUT BELANJA"
+            text: "KEMBALI KE PRODUK"
             size_hint_y: None
-            height: dp(55)
+            height: dp(50)
             background_normal: ""
-            background_color: 0.25, 0.55, 0.90, 1
+            background_color: 0.15, 0.55, 0.90, 1
+            color: 1, 1, 1, 1
             bold: True
             on_press:
                 app.root.current = "product"
 
         Button:
-            text: "KEMBALI KE HOME"
+            text: "KEMBALI KE LOGIN"
             size_hint_y: None
-            height: dp(48)
+            height: dp(45)
             background_normal: ""
-            background_color: 0.22, 0.24, 0.35, 1
+            background_color: 0.15, 0.18, 0.28, 1
+            color: 0.70, 0.80, 0.95, 1
             on_press:
-                app.root.current = "home"
-
-
-<CartScreen>:
-    canvas.before:
-        Color:
-            rgba: 0.06, 0.08, 0.14, 1
-        Rectangle:
-            pos: self.pos
-            size: self.size
-
-    BoxLayout:
-        orientation: "vertical"
-        padding: dp(35)
-        spacing: dp(20)
-
-        Label:
-            text: "KERANJANG BELANJA"
-            font_size: "30sp"
-            bold: True
-            color: 0.30, 0.90, 0.75, 1
-            size_hint_y: None
-            height: dp(70)
-
-        Label:
-            text: "Produk yang kamu pilih:"
-            font_size: "17sp"
-            color: 0.70, 0.73, 0.82, 1
-            size_hint_y: None
-            height: dp(40)
-
-        Label:
-            text: root.nama_produk
-            font_size: "28sp"
-            bold: True
-            color: 1, 1, 1, 1
-            size_hint_y: None
-            height: dp(100)
-
-        Label:
-            text: "Produk berhasil ditambahkan ke keranjang!"
-            font_size: "16sp"
-            color: 1, 0.80, 0.35, 1
+                app.root.current = "login"
 
         Widget:
-
-        Button:
-            text: "← LANJUT BELANJA"
-            size_hint_y: None
-            height: dp(55)
-            background_normal: ""
-            background_color: 0.25, 0.55, 0.90, 1
-            bold: True
-            on_press:
-                app.root.current = "product"
-
-        Button:
-            text: "KEMBALI KE HOME"
-            size_hint_y: None
-            height: dp(48)
-            background_normal: ""
-            background_color: 0.22, 0.24, 0.35, 1
-            on_press:
-                app.root.current = "home"
+            size_hint_y: 0.25
